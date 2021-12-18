@@ -1,0 +1,27 @@
+{
+  "extends": ["airbnb", "airbnb/hooks"],
+  "env": {
+    "browser": true,
+    "jest/globals": true
+  },
+ "globals": {
+      "process": "readonly"
+  },
+  "rules": {
+    "react/jsx-curly-newline": "error",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "plugins": ["jest"],
+  "settings": {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['assets', './src/assets']
+        ]
+      }
+    }
+  }
+}
