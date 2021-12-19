@@ -3,6 +3,8 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from './components/Home';
 import normalize from './utils/normalize';
+import Navigation from './components/Navigation';
+import { paths } from './config';
 
 const theme = {
   formGray: '#ccc',
@@ -15,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
   ${normalize};
   body {
     background: white;
-    padding: 10px;
   }
   button {
     background-color: white;
@@ -55,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     color: black;
+    text-decoration: none;
   }
 
   h2 {
@@ -70,10 +72,21 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            exact
             path="/"
             element={<Home />}
           />
+          <Route
+            element={<Navigation />}
+          >
+            <Route
+              path="/search"
+              element={<div>search</div>}
+            />
+            <Route
+              path="/favorite"
+              element={<div>favorite</div>}
+            />
+          </Route>
         </Routes>
       </BrowserRouter>
       <GlobalStyle />
