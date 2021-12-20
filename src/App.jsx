@@ -4,6 +4,8 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from './components/Home';
 import normalize from './utils/normalize';
 import Navigation from './components/Navigation';
+import Layout from './components/Layout';
+import Search from './features/Search';
 import { paths } from './config';
 
 const theme = {
@@ -73,17 +75,22 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home />}
-          />
+            element={<Layout />}
+          >
+            <Route
+              index
+              element={<Home />}
+            />
+          </Route>
           <Route
             element={<Navigation />}
           >
             <Route
-              path="/search"
-              element={<div>search</div>}
+              path={`${paths.search}`}
+              element={<Search />}
             />
             <Route
-              path="/favorite"
+              path={`${paths.favorite}`}
               element={<div>favorite</div>}
             />
           </Route>

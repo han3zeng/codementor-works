@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { paths } from '../config';
+import { FavoritesProvider } from '../contexts/favorites';
+import Layout from './Layout';
 
 const links = [
   paths.search,
@@ -11,7 +13,7 @@ const links = [
 const LABEL_MAP = {
   search: 'Search',
   favorite: 'Favorite',
-}
+};
 
 const Container = styled.div`
   background-color: #F0F0F0;
@@ -34,7 +36,7 @@ const Tab = styled.p`
   align-items: flex-end;
   margin: 0;
   font-weight: ${(props) => (props.highlight ? 'bold' : 'initial')};
-  color: ${(props) => (props.highlight ? '#787878' : '#989898')};
+  color: ${(props) => (props.highlight ? 'black' : '#989898')};
   background-color: ${(props) => (props.highlight ? 'white' : 'transparent')};
 `;
 
@@ -58,7 +60,11 @@ function Navigation() {
       <Container>
         {tabs}
       </Container>
-      <Outlet />
+      <FavoritesProvider>
+        <Layout>
+          <Outlet />
+        </Layout>
+      </FavoritesProvider>
     </>
   );
 }

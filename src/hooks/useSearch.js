@@ -5,7 +5,7 @@ const client = algoliasearch('XIMRNVJLQ7', '79d8a9e0e13c7f9e65ce7cd393f39934');
 const index = client.initIndex('Community_articles_staging');
 
 function useSearch() {
-  const [state, setState] = useState(null);
+  const [state, setState] = useState({});
   const [loading, setLoading] = useState(false);
 
   async function search({
@@ -13,6 +13,11 @@ function useSearch() {
   }) {
     setLoading(true);
     try {
+      if (!query) {
+        setState({});
+        setLoading(false);
+        return;
+      }
       const result = await index.search(query)
       setState(result);
       setLoading(false);
@@ -25,7 +30,7 @@ function useSearch() {
   return [
     search,
     {
-      data: state,
+      data: state?.hits || [],
       loading,
     },
   ];
