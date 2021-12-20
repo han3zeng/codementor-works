@@ -1,10 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
-import useFavorites from '../hooks/useFavorites';
 import useSearch from '../hooks/useSearch';
 import { debounce, compose } from '../utils/lodash';
 import ResultRow from '../components/ResultRow';
-
+import useFavorites from '../hooks/useFavorites';
 
 const Conatiner = styled.div`
   > input {
@@ -14,6 +13,9 @@ const Conatiner = styled.div`
 
 function Search() {
   const [search, { data, loading }] = useSearch();
+  const { state, dispatch } = useFavorites();
+  const { favoriteSet, searchResult } = state;
+  const { term, result } = data;
 
   const onChangeHandler = debounce((e) => {
     const { value } = e.target;
@@ -22,7 +24,17 @@ function Search() {
     });
   }, 500);
 
-  const rows = useMemo(() => data.map(({
+  const onSaveToggleHandler = useCallback(({
+    type,
+    payload,
+  }) => {
+    dispatch({
+      type,
+      payload,
+    })
+  }, []);
+
+  const rows = useMemo(() => result.map(({
     title,
     categories,
     id,
@@ -34,16 +46,19 @@ function Search() {
       authorName={authorName}
       title={title}
       categories={categories}
+      onSaveToggleHandler={onSaveToggleHandler}
+      saved={favoriteSet[id]}
     />
-  )), [data]);
+  )), [searchResult, favoriteSet]);
 
   return (
     <Conatiner>
       <input
+        defaultValue={term}
         onChange={onChangeHandler}
       />
       {loading && <p>... Loading</p>}
-      {rows}
+      {!loading && rows}
     </Conatiner>
   );
 }

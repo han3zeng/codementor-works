@@ -43,14 +43,15 @@ const Tab = styled.p`
 function Navigation() {
   const location = useLocation();
   const { pathname } = location;
-  const tabs = links.map((elem) => (
+  const tabs = links.map((tabName) => (
     <Link
-      to={`/${elem}`}
+      to={`/${tabName}`}
+      key={tabName}
     >
       <Tab
-        highlight={pathname === `/${elem}`}
+        highlight={pathname === `/${tabName}`}
       >
-        {LABEL_MAP[elem]}
+        {LABEL_MAP[tabName]}
       </Tab>
     </Link>
   ));

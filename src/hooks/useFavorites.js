@@ -2,9 +2,10 @@ import { useContext } from 'react';
 import { FavoritesContext } from '../contexts/favorites';
 
 function useFavorites() {
-  const context = useContext(FavoritesContext);
+  const { state, dispatch } = useContext(FavoritesContext);
   return {
-    ...context,
+    state,
+    dispatch,
   };
 }
 
