@@ -1,6 +1,5 @@
-import { useContext, useState, useEffect, useMemo } from 'react';
-import { FavoritesContext } from '../contexts/favorites';
-import algoliasearch from 'algoliasearch/lite';
+import { useContext, useState, useEffect } from 'react';
+import { ArticlesContext } from '../contexts/articles';
 import {
   SET_SEARCH_RESULT,
 } from '../constants';
@@ -8,12 +7,8 @@ import {
   ALGOLIA_APLICATION_ID,
   ALGOLIA_APLICATION_KEY,
   ALGOLIA_INDEX_NAME,
-  VERSION
+  VERSION,
 } from '../constants/algolia';
-
-const client = algoliasearch('XIMRNVJLQ7', '79d8a9e0e13c7f9e65ce7cd393f39934');
-const index = client.initIndex('Community_articles_staging');
-
 
 async function fetchFromAlgolia({
   query,
@@ -43,7 +38,7 @@ async function fetchFromAlgolia({
 }
 
 function useArticles() {
-  const { state, dispatch } = useContext(FavoritesContext);
+  const { state, dispatch } = useContext(ArticlesContext);
   const [loading, setLoading] = useState(false);
   const [currentSignal, setSignal] = useState(null);
 

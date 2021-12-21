@@ -5,7 +5,7 @@ import {
   SET_SEARCH_RESULT,
 } from '../constants';
 
-const FavoritesContext = createContext({
+const ArticlesContext = createContext({
   searchResult: [],
   favorites: [],
   favoriteSet: {},
@@ -50,23 +50,23 @@ function reducer(state, action) {
   }
 }
 
-function FavoritesProvider({
+function ArticlesProvider({
   children,
 }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <FavoritesContext.Provider
+    <ArticlesContext.Provider
       value={{
         state,
         dispatch,
       }}
     >
       {children}
-    </FavoritesContext.Provider>
+    </ArticlesContext.Provider>
   );
 }
 
 export {
-  FavoritesProvider,
-  FavoritesContext,
+  ArticlesProvider,
+  ArticlesContext,
 };

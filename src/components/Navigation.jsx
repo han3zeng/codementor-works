@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { paths } from '../config';
-import { FavoritesProvider } from '../contexts/favorites';
+import { ArticlesProvider } from '../contexts/articles';
 import Layout from './Layout';
 
 const links = [
@@ -61,11 +61,11 @@ function Navigation() {
       <Container>
         {tabs}
       </Container>
-      <FavoritesProvider>
+      <ArticlesProvider>
         <Layout>
           <Outlet />
         </Layout>
-      </FavoritesProvider>
+      </ArticlesProvider>
     </>
   );
 }

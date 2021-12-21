@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/han3zeng/react-starter#readme",
   "dependencies": {
-    "algoliasearch": "^4.11.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

@@ -19,4 +19,4 @@
 
 
 ## To Do
-* fetch retry
+* [ ] fetch retry
