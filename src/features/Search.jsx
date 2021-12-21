@@ -56,6 +56,13 @@ function Search() {
     />
   )), [searchResult, favoriteSet]);
 
+  const content = (() => {
+    if (term !== '' && result.length === 0) {
+      return <p>No Result</p>;
+    }
+    return rows;
+  })();
+
   return (
     <Conatiner>
       <input
@@ -63,7 +70,7 @@ function Search() {
         onChange={onChangeHandler}
       />
       {loading && <p>... Loading</p>}
-      {!loading && rows}
+      {!loading && content}
     </Conatiner>
   );
 }

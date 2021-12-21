@@ -51,7 +51,7 @@ function ResultRow({
   if (!id) {
     return null;
   }
-  const categoriesContent = categories.map((category) => <p>{category}</p>)
+  const categoriesContent = categories.map((category) => <p key={category}>{category}</p>)
   return (
     <Container
       saved={saved}
