@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 FROM base as prod
-RUN npm ci --only=production
+RUN npm ci
 COPY . ./
 RUN npm run build
 
