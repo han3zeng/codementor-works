@@ -6,9 +6,23 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  .left {
+  flex-wrap: wrap;
+  padding: 30px 0;
+  border-bottom: 1px solid ${(props) => props.theme.formGray};
+  .resultRowleft {
     > div {
       display: flex;
+      align-items: center;
+      > p {
+        color: #404040;
+        margin-right: 10px;
+        background-color: #F0F0F0;
+        padding: 3px 6px;
+      }
+      > p:first-of-type {
+        margin-right: 30px;
+        background-color: transparent;
+      }
     }
   }
   button {
@@ -23,7 +37,7 @@ const Container = styled.div`
 
 const Button = styled.button`
   background-color: ${(props) => (props.highlight ? props.theme.formGray : 'white')};
-  color: ${(props) => (props.highlight ? 'white' : '#333')};
+  color: ${(props) => (props.highlight ? 'white' : props.theme.formHighlightGray)};
 `;
 
 function ResultRow({
@@ -37,19 +51,20 @@ function ResultRow({
   if (!id) {
     return null;
   }
+  const categoriesContent = categories.map((category) => <p>{category}</p>)
   return (
     <Container
       saved={saved}
     >
       <div
-        className="left"
+        className="resultRowleft"
       >
         <h2>
           {title}
         </h2>
         <div>
           <p>{authorName}</p>
-          <p>{categories}</p>
+          {categoriesContent}
         </div>
       </div>
       <Button

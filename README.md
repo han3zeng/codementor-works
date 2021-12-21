@@ -20,3 +20,4 @@
 
 ## To Do
 * [ ] fetch retry
+* [ ] optimize mobile UI
