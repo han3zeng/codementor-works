@@ -1,9 +1,8 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
-import useSearch from '../hooks/useSearch';
 import { debounce, compose } from '../utils/lodash';
 import ResultRow from '../components/ResultRow';
-import useFavorites from '../hooks/useFavorites';
+import useArticles from '../hooks/useArticles';
 
 const Conatiner = styled.div`
   > input {
@@ -12,10 +11,16 @@ const Conatiner = styled.div`
 `;
 
 function Search() {
-  const [search, { data, loading }] = useSearch();
-  const { state, dispatch } = useFavorites();
+  const [
+    search,
+    {
+      loading,
+      state,
+      dispatch,
+    },
+  ] = useArticles();
   const { favoriteSet, searchResult } = state;
-  const { term, result } = data;
+  const { term, result } = searchResult;
 
   const onChangeHandler = debounce((e) => {
     const { value } = e.target;
