@@ -21,6 +21,9 @@ const Container = styled.div`
   display: flex;
   padding: 0 20px;
   align-items: flex-end;
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Tab = styled.p`
