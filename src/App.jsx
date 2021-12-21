@@ -6,6 +6,7 @@ import normalize from './utils/normalize';
 import Navigation from './components/Navigation';
 import Layout from './components/Layout';
 import Search from './features/Search';
+import Favorites from './features/Favorites';
 import { paths } from './config';
 
 const theme = {
@@ -91,7 +92,7 @@ function App() {
             />
             <Route
               path={`${paths.favorite}`}
-              element={<div>favorite</div>}
+              element={<Favorites />}
             />
           </Route>
         </Routes>
