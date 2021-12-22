@@ -13,5 +13,5 @@ test('debounce function', () => {
     debouncedTestFn();
   }
   jest.advanceTimersByTime(timeInterval);
-  expect(testFn).toHaveBeenCalledTimes(2);
+  expect(testFn).toHaveBeenCalledTimes(1);
 });

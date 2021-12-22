@@ -7,7 +7,7 @@ beforeEach(() => {
 });
 
 describe('src/utils/retry function test: ', () => {
-  test('1. try three times  2. reoslve successfully', async () => {
+  test('a. try 3 times  b. reoslve successfully', async () => {
     testFn
       .mockRejectedValueOnce('error 1')
       .mockRejectedValueOnce('error 2')
@@ -18,7 +18,7 @@ describe('src/utils/retry function test: ', () => {
     expect(testFn).toHaveBeenCalledTimes(3);
   });
 
-  test('1. try 5 times 2. reject eventually', async () => {
+  test('a. try 5 times  b. reject eventually', async () => {
     testFn
       .mockRejectedValueOnce('error 1')
       .mockRejectedValueOnce('error 2')

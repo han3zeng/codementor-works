@@ -64,7 +64,7 @@ describe('useArticles search: ', () => {
     expect(result.current[1].state).toStrictEqual(expectedResult);
   });
 
-  test('check associated algolia url in each retry-equest is correct', async () => {
+  test('check associated algolia url in each retry-request is correct', async () => {
     expect(requestedUrl[0]).toBe(DEFAULT_ALGOLIA_URL);
     expect(ALGOLIA_URL_CANDIDATES).toEqual(expect.arrayContaining([requestedUrl[1]]));
   });
