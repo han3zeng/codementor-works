@@ -11,13 +11,15 @@
         1. `npm i`
         2. `npm run test`
 
-* Production (build and release)
+* Local Production (build and release)
     * build and publish to npm cloud server
         1. `npm i`
         2. `npm run build`
-        3. `npm run publish:customized`
+        3. `npm run start`
 
+* Fully Deployed Product
+    * [link](https://codementor-demo-wzkowzlnla-de.a.run.app/)
 
 ## To Do
-* [ ] fetch retry
+* [ ] fetch timelimit
 * [ ] optimize mobile UI
