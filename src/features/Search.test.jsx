@@ -54,3 +54,7 @@ test('Search.js: content with mock state', async () => {
   expect(screen.getByText(/title 2/)).toBeInTheDocument();
   expect(screen.getByText(/author 2/)).toBeInTheDocument();
 });
+
+afterAll(() => {
+  delete global.fetch;
+})
