@@ -1,6 +1,8 @@
+export const maxTriesError = new Error('reach number of max tries');
+
 async function retry(fn, maxTries, params) {
   if (maxTries === 0) {
-    return Promise.reject(new Error('reach number of max tries'));
+    return Promise.reject(maxTriesError);
   }
   try {
     const result = await fn({
