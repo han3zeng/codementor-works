@@ -4,6 +4,11 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+FROM base as test
+RUN npm ci
+COPY . .
+RUN npm run test
+
 FROM base as prod
 RUN npm ci
 COPY . ./
