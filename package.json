@@ -8,7 +8,6 @@
     "dev": "ENV=development PORT=3001 node ./server.js",
     "build": "webpack --config ./webpack/webpack.prod.js",
     "start": "ENV=production PORT=3001 node ./server.js",
-    "publish:customized": "cp ./package.json ./README.md ./dist && cd ./dist && npm publish",
     "test": "BABEL_ENV=development jest"
   },
   "repository": {

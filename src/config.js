@@ -3,6 +3,11 @@ const paths = Object.freeze({
   favorite: 'favorite',
 });
 
+const setting = {
+  debounceTime: 500,
+};
+
 export {
   paths,
+  setting,
 };

@@ -9,7 +9,8 @@
   },
   "rules": {
     "react/jsx-curly-newline": "error",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "react/jsx-props-no-spreading": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2020

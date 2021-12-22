@@ -1,8 +1,11 @@
-import React, { useMemo, useCallback, useEffect } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import styled from 'styled-components';
-import { debounce, compose } from '../utils/lodash';
+import { debounce } from '../utils/lodash';
 import ResultRow from '../components/ResultRow';
 import useArticles from '../hooks/useArticles';
+import { setting } from '../config';
+
+const { debounceTime } = setting;
 
 const Conatiner = styled.div`
   > input {
@@ -27,7 +30,7 @@ function Search() {
     search({
       query: value,
     });
-  }, 500);
+  }, debounceTime);
 
   const onSaveToggleHandler = useCallback(({
     type,
@@ -36,7 +39,7 @@ function Search() {
     dispatch({
       type,
       payload,
-    })
+    });
   }, []);
 
   const rows = useMemo(() => result.map(({
@@ -66,6 +69,8 @@ function Search() {
   return (
     <Conatiner>
       <input
+        type="text"
+        aria-label="search-input"
         defaultValue={term}
         onChange={onChangeHandler}
       />
