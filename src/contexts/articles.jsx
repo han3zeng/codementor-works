@@ -6,9 +6,11 @@ import {
 } from '../constants';
 
 const ArticlesContext = createContext({
-  searchResult: [],
-  favorites: [],
-  favoriteSet: {},
+  state: {
+    searchResult: [],
+    favorites: [],
+    favoriteSet: {},
+  },
   dispatch: () => {},
 });
 
@@ -69,4 +71,5 @@ function ArticlesProvider({
 export {
   ArticlesProvider,
   ArticlesContext,
+  initialState,
 };
